@@ -1,7 +1,5 @@
-function addGlobalUtils(config) {
-
-  console.log('Integration loaded');
-
+module.exports = function(config) {
+ 
+  console.log('Integration with nothing in it has loaded.');
+  
 };
-
-module.exports = addGlobalUtils;
