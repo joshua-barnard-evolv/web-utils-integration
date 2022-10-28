@@ -1,4 +1,18 @@
 module.exports = function(config) {
+	
+	function docComplete(fn) {
+		// see if DOM is already available
+		if (document.readyState === "complete") {
+				// call on next available tick
+				setTimeout(fn, 1);
+		} else {
+				document.addEventListener('readystatechange', function(event) {
+						if (event.target.readyState === 'complete') {
+							fn();
+						}
+				});
+		}
+	}
 
 	function waitForExist(selectors, callback, timeout, clearIntervalOnTimeout, resolveCb, rejectCb) {
 			let existInterval = setInterval(function () {
